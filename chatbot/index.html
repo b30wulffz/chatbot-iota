@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAAWwDNWOQAsN9SM3_9w5HKJBlI4mKLrXw",
+        authDomain: "chatbot-iota.firebaseapp.com",
+        databaseURL: "https://chatbot-iota.firebaseio.com",
+        projectId: "chatbot-iota",
+        storageBucket: "chatbot-iota.appspot.com",
+        messagingSenderId: "646371725995"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="header">
+        <ul>
+          <div style="clear:both;">
+          </div>
+          <li class="user"><img src="img/default.jpg" alt=""></li>
+          <li class="user"><h3>John Doe</h3></li>
+          <li class="login" style="float:right;"><a onclick="initiate_google_signin()">SignIn</a></li>
+          <div style="clear:both;">
+          </div>
+        </ul>
+
+      </div>
+
+      <div class="chat" id="chat">
+
+      </div>
+
+      <div class="type">
+        <div class="box" style="margin-right:40px">
+          <input type="text" placeholder="Reply" id="receiveinput">
+          <button type="button" name="button" onClick="reply()">Reply</button>
+        </div>
+        <div class="box">
+          <input type="text" placeholder="Reply" id="sendinput" value="">
+          <button type="button" name="button" onClick="sent()">Reply</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+            var auth= firebase.auth();
+            var fireUser = null,i=0;
+
+            function get_details(result){
+                fireUser= result.user;
+                console.log(fireUser);
+                document.getElementsByTagName('img')[0].setAttribute("src",fireUser.photoURL);
+                document.getElementsByTagName('a')[0].setAttribute("onclick","");
+                document.getElementsByTagName('a')[0].innerHTML="Welcome";
+                document.getElementsByTagName('h3')[0].innerHTML=fireUser.displayName;
+                i=1;
+            }
+
+            function disp_error(error){
+                console.log(error);
+                alert("Error: "+error.message+" Code: "+error.code );
+                i=0;
+            }
+
+            var provider=new firebase.auth.GoogleAuthProvider();
+            function initiate_google_signin(){
+                auth.signInWithPopup(provider).then(get_details).catch(disp_error);
+            }
+
+
+      function reply(){
+        if(i==1)
+        {
+          var new_ele=document.createElement("p");
+          new_ele.className="reply";
+          var data=document.getElementById("receiveinput").value;
+          var txt=document.createTextNode(data);
+          new_ele.appendChild(txt);
+
+          var where=document.getElementById("chat");
+          where.appendChild(new_ele);
+          where.scrollTop=where.scrollHeight;
+        }
+      }
+      function sent(){
+        if(i==1)
+        {
+          var new_ele=document.createElement("p");
+          new_ele.className="send";
+          var data=document.getElementById("sendinput").value;
+          var txt=document.createTextNode(data);
+          new_ele.appendChild(txt);
+
+          var where=document.getElementById("chat");
+          where.appendChild(new_ele);
+          where.scrollTop=where.scrollHeight;
+        }
+      }
+    </script>
+  </body>
+</html>

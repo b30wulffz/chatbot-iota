@@ -1,0 +1,121 @@
+.container{
+  height:500px;
+  width:600px;
+  margin: auto;
+  margin-top: 5%;
+  font-family: 'Noto Sans', sans-serif;
+  background-color: rgb(228, 228, 228);
+}
+
+
+.header{
+  /* border: thin solid black; */
+  background-image: linear-gradient(rgb(157, 232, 249)  ,rgb(228, 228, 228));
+  height: 60px;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.header ul{
+  list-style: none;
+  padding: 0px;
+  margin-left: 0px;
+}
+
+.header li{
+  display: inline-block;
+  float: left;
+  margin: 15px 5px;
+}
+
+.user h3{
+  display: inline;
+}
+
+.user img{
+  width:35px;
+  margin-left: 20px;
+  border-radius: 100%;
+}
+
+.login a{
+  padding: 5px 60px;
+  text-decoration: none;
+  color: rgb(39, 66, 202);
+  border: medium solid rgb(39, 66, 202);
+  border-radius: 30px;
+  font-size: 13px;
+  margin-right:20px;
+  font-weight: bolder;
+  box-sizing: border-box;
+}
+
+.login a:hover{
+  color: rgb(124, 144, 241);
+  border: medium solid rgb(124, 144, 241);
+}
+
+
+.chat{
+  height:400px;
+  width:100%;
+  /* border: thin solid black; */
+  /* position: relative; */
+  z-index: -1;
+  background-image: linear-gradient(rgb(228, 228, 228),#ffffff);
+  overflow: auto;
+  margin-top: -100px;
+}
+
+.chat p, .reply{
+  font-size: 15px;
+  display: block;
+  float:left;
+  clear:both;
+  padding: 10px;
+  padding-bottom: 2em;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: rgb(173, 215, 228);
+  max-width: 70%;
+  word-wrap:break-word;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 70% 90%, 70% 100%, 50% 90%, 0% 90%);
+}
+
+p[class='send']{
+  float:right;
+  clear:both;
+  background-color: rgb(133, 209, 23);
+}
+
+.type{
+   /* height:15%; */
+   /* border: thin solid black; */
+   background-color: #ffffff;
+   padding-top: 10px;
+}
+
+.type .box{
+  display: inline-block;
+  margin-left: 40px;
+  margin-right: auto;
+}
+
+.type .box input{
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  height: 25px;
+  width: 70%;
+  padding: 4px;
+  box-sizing: border-box;
+  padding-left:6px;
+  border-color: rgb(79, 230, 163);
+  border-style: solid;
+}
+
+.type .box button{
+  border-radius: 5px;
+  border-style: solid;
+  padding: 3px;
+  color: rgb(89, 97, 94);
+}
